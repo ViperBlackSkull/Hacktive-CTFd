@@ -1,0 +1,44 @@
+---
+- name: Deploy CTFd with Let's Encrypt
+  hosts: all
+  become: true
+  vars_files:
+    - vars.yml
+
+  tasks:
+    - name: Ensure necessary directories exist
+      file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - "{{ certbot_path }}"
+        - "{{ nginx_config_path }}"
+        - "{{ certbot_webroot }}"
+        - "{{ path }}/data"
+
+    - name: Generate `app.conf` on the remote machine
+      template:
+        src: app.conf.j2
+        dest: "{{ nginx_config_path }}/app.conf"
+        mode: "0755"
+        
+    - name: Generate `docker-compose` on the remote machine
+      template:
+        src: docker-compose.yml.j2
+        dest: "{{ docker_compose_path }}"
+        mode: "0755"
+
+    - name: Generate `init-letsencrypt.sh` on the remote machine
+      template:
+        src: init-letsencrypt.sh.j2
+        dest: "{{ path }}/init-letsencrypt.sh"
+        mode: "0755"
+
+    #- name: Run Let's Encrypt initialization script
+    #  command: "bash {{ path }}/init-letsencrypt.sh"
+
+
+    #- name: Start CTFd with Docker Compose
+    #  command: docker compose up -d
+    #  args:
+    #    chdir: "{{ path }}"
