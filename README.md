@@ -1,4 +1,4 @@
-# CTFd-Nginx-LetsEncrypt
+# Hacktive-CTFd
 
 This project provides a fully configurable and automated setup for deploying [CTFd](https://github.com/CTFd/CTFd) with Nginx and Let's Encrypt using Docker and Ansible. The setup is designed to be portable and configurable via code.
 
@@ -29,7 +29,7 @@ This project provides a fully configurable and automated setup for deploying [CT
    ansible-playbook deploy.yml
    ```
 
-4. Access your CTFd instance via `https://yourdomain.com`.
+4. Access your CTFd instance via `https://hacktive.education`.
 
 ## Credits
 This repository is based on the original work by [chrisandoryan](https://github.com/chrisandoryan/CTFd-Nginx-LetsEncrypt). Special thanks to them for their contributions to the CTF community.
