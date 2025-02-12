@@ -1,7 +1,7 @@
 ---
 domain: "dev.hacktive.education"
 path: "/root/config/"
-certbot_email: "vipergrosman@hotmail.com"
+certbot_email: "email@example.org"
 nginx_config_path: "{{ path }}data/nginx/"
 certbot_path: "{{ path }}data/certbot"
 certbot_webroot: "/var/www/certbot"
